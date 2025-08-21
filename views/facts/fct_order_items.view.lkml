@@ -5,13 +5,15 @@ view: fct_order_items {
 
   # Step 1: Update id -> order_item_id
 
-  dimension: order_item_id {
+  dimension: order_item_id { # change made ..
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
   }
 
-  dimension_group: delivered {
+  # Step 2: Add delivered_at dimension_group
+
+  dimension_group: delivered { # change made ..
     type: time
     description: "The date/timestamp the line item was created."
     timeframes: [
@@ -40,8 +42,6 @@ view: fct_order_items {
     ]
     sql: ${TABLE}.created_at ;;
   }
-
-  # Step 2: Add delivered_at dimension_group
 
   dimension: order_id {
     type: number
